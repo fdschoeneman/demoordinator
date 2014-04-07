@@ -38,3 +38,26 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+
+gem 'devise'
+gem 'devise_invitable'
+gem 'foundation-rails'
+gem 'haml-rails'
+gem 'pg'
+gem 'pundit'
+gem 'simple_form'
+gem 'thin'
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :mri_21, :rbx]
+  gem 'guard-bundler'
+  gem 'guard-rails'
+  gem 'html2haml'
+  gem 'quiet_assets'
+  gem 'rails_layout'
+  gem 'rb-fchange', :require=>false
+  gem 'rb-fsevent', :require=>false
+  gem 'rb-inotify', :require=>false
+end
+
