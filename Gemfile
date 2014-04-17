@@ -45,6 +45,11 @@ gem 'pundit'
 # State machine for demo
 gem 'aasm'
 
+# for managing heroku credentials
+gem "figaro"
+
+gem 'rails_12factor', group: :production
+
 group :doc do
   gem 'sdoc', '~> 0.4.0'
 end
