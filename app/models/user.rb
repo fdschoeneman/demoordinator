@@ -10,4 +10,7 @@ class User < ActiveRecord::Base
     self.role ||= :user
   end
 
+  has_many :orgs_users
+  has_many :orgs, through: :orgs_users
+
 end

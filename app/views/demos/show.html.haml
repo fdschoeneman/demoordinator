@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Contractor:
+  = @demo.contractor_id
+%p
+  %b Client:
+  = @demo.client_id
+%p
+  %b Facilitator:
+  = @demo.facilitator_id
+%p
+  %b Venue:
+  = @demo.venue_id
+
+= link_to 'Edit', edit_demo_path(@demo)
+\|
+= link_to 'Back', demos_path

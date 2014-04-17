@@ -1,14 +1,33 @@
-# A sample Guardfile
-# More info at https://github.com/guard/guard#readme
-
-guard :bundler do
+guard 'bundler' do
   watch('Gemfile')
-  # Uncomment next line if your Gemfile contains the `gemspec' command.
-  # watch(/^.+\.gemspec/)
 end
 
-guard 'rails' do
-  watch('Gemfile.lock')
-  watch(%r{^(config|lib)/.*})
+group :tests do 
+
+  guard :minitest, all_on_start: false, spring: 'rake test', bundler: false do
+
+    watch(%r{^test/factories/(.+)\.rb})                    { 'test/meta/factories_test.rb' }
+    watch(%r{^test/(.*)\/?_test(.*)\.rb})
+    watch(%r{^test/support/(.+)\.rb})      { 'test' }
+    watch(%r{^test/test_helper\.rb})      { 'test' }
+    watch(%r{^test/meta/.+_test\.rb})
+
+    watch(%r{^lib/(.*/)?([^/]+)\.rb})     { |m| "test/#{m[1]}test_#{m[2]}.rb" }
+    watch(%r{^app/(.+)\.rb})                               { |m| "test/#{m[1]}_test.rb" }
+    watch(%r{^app/controllers/application_controller\.rb}) { 'test' }
+    watch(%r{^app/controllers/(.+)_controller\.rb})        { |m| "test/features/#{m[1]}_test.rb" }
+    watch(%r{^app/views/(.+)_mailer/.+})                   { |m| "test/mailers/#{m[1]}_mailer_test.rb" }
+    watch(%r{^lib/(.+)\.rb})                               { |m| "test/lib/#{m[1]}_test.rb" }
+  end
+end
+
+guard 'livereload' do
+
+  watch(%r{app/views/.+\.(erb|haml|slim)$})
+  watch(%r{app/assets/javascripts/.+\.(js|handlebars|hbs|emblem|)*$}) 
+  watch(%r{app/helpers/.+\.rb})
+  watch(%r{public/.+\.(css|js|html)})
+  watch(%r{config/locales/.+\.yml})
+  watch(%r{(app|vendor)(/assets/\w+/(.+\.(css|sass|scss|js|html))).*}) { |m| "/assets/#{m[3]}" }
 end
 

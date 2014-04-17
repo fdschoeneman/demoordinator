@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.1.1'
 
-gem 'rails', '4.0.4'
+gem 'rails', '4.1.0'
 
 # server
 gem 'thin'
@@ -42,16 +42,21 @@ gem 'faker-stoked', github: 'fdschoeneman/faker-stoked', branch: 'master'
 # authorization
 gem 'pundit'
 
+# State machine for demo
+gem 'aasm'
+
 group :doc do
   gem 'sdoc', '~> 0.4.0'
 end
 
 group :development do
 
+  gem 'guard-minitest'
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :mri_21, :rbx]
   gem 'guard-bundler'
   gem 'guard-rails'
+  gem 'guard-livereload'
   gem 'html2haml'
   gem 'quiet_assets'
   gem 'rails_layout'
@@ -63,14 +68,18 @@ end
 
 group :test do
 
-  gem 'minitest-rails'
-  # gem 'capybara-email'
+  gem 'minitest-spec-rails'
   gem 'minitest-given'
+
+  # gem 'capybara-email'
+  # gem 'minitest'
+  # gem 'minitest-rails'
+  # gem 'minitest-given'
   gem 'wrong'
 
   # pretty test output
-  gem 'ansi'
-  gem 'turn'
+  # gem 'ansi'
+  # gem 'turn'
 
   # capybara save_and_open dependency
   gem 'launchy'
@@ -79,5 +88,7 @@ end
 
 group :development, :test do
   gem 'spring'
+  gem 'factory_girl_rails'
+  gem 'pry-rails'
 end
 

@@ -1,0 +1,25 @@
+%h1 Listing demos
+
+%table
+  %tr
+    %th Contractor
+    %th Client
+    %th Facilitator
+    %th Venue
+    %th
+    %th
+    %th
+
+  - @demos.each do |demo|
+    %tr
+      %td= demo.contractor_id
+      %td= demo.client_id
+      %td= demo.facilitator_id
+      %td= demo.venue_id
+      %td= link_to 'Show', demo
+      %td= link_to 'Edit', edit_demo_path(demo)
+      %td= link_to 'Destroy', demo, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Demo', new_demo_path

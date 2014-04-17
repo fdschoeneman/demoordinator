@@ -1,5 +1,81 @@
-%h3 Home
-- if !current_user.nil? and current_user.admin?
-  - @users.each do |user|
-    %p
-      User: #{link_to user.email, user} Role: #{user.role unless user.role.nil?}
+/ Header and Nav
+.row
+  .large-12.columns
+    .panel
+      .text-center
+        %h1 My Contracts
+/ End Header and Nav
+.row
+  / Nav Sidebar
+  / This is source ordered to be pulled to the left on larger screens
+  .large-3.columns
+    .panel
+      = image_tag("harmlessharvestavatar.jpeg")
+      %h5
+        %a{href: "#"} Harmless Harvest, Inc.
+        / Main Feed
+  / This has been source ordered to come first in the markup (and on small devices) but to be to the right of the nav on larger screens
+  .large-9.columns
+    / Feed Entry
+    .row
+      %dl.sub-nav
+        %dd
+          %a{href: "#"} Drafts
+        %dd
+          %a{href: "#"} Proffered
+        %dd
+          %a{href: "#"} Contracted
+        %dd
+          %a{href: "#"} Accepted
+        %dd.active
+          %a{href: "#"} Rejected
+        / %dd
+        / %a{href: "#"} Paid
+        / %dd
+        /   %a{href: "#"} Contractor_reviewed
+        / %dd
+        /   %a{href: "#"} Client_reviewed
+        %dd
+          %a{href: "#"} Complete
+        %dd
+          %a{href: "#"} Archived
+    .row
+      .large-2.columns.small-3
+        = image_tag("popeil.jpg")
+      .large-10.columns
+        %p
+          %strong= Faker::Stoked.fullname.titleize + ":"
+          = Faker::Stoked.sentence
+        %p
+          %strong Status: Rejected
+        / %h6 Activities
+        / .row
+        /   .large-2.columns.small-3
+        /     %img{src: "http://placehold.it/50x50&text=[img]"}/
+        /   .large-10.columns
+        /     %p Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit
+        / .row
+        /   .large-2.columns.small-3
+        /     %img{src: "http://placehold.it/50x50&text=[img]"}/
+        /   .large-10.columns
+        /     %p Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit
+        %ul.button-group
+          = link_to "Details", "#", class: "button"
+          = link_to "Accept", "#", class: "button"
+          = link_to "Reject", "#", class: "button disabled"
+    / End Feed Entry
+    %hr/
+    / Feed Entry
+    .row
+      .large-2.columns.small-3
+        = image_tag("billymais.jpg")
+      .large-10.columns
+        %p
+          %strong= Faker::Stoked.fullname.titleize + ":"
+          = Faker::Stoked.sentence
+        %p
+          %strong Status: Rejected
+        %ul.button-group
+          = link_to "Details", "#", class: "button"
+          = link_to "Accept", "#", class: "button"
+          = link_to "Reject", "#", class: "button disabled"

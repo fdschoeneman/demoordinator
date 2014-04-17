@@ -11,10 +11,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140407173240) do
+ActiveRecord::Schema.define(version: 20140415083036) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "address_1s", force: true do |t|
+    t.string   "address_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "country"
+    t.string   "public_phone"
+    t.string   "public_email"
+    t.string   "public_url"
+    t.string   "addressable_type"
+    t.integer  "addressable_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "demos", force: true do |t|
+    t.integer  "contractor_id"
+    t.integer  "client_id"
+    t.integer  "facilitator_id"
+    t.integer  "venue_id"
+    t.string   "aasm_state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orgs", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orgs_users", force: true do |t|
+    t.integer  "org_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
