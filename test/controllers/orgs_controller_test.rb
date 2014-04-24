@@ -1,9 +1,11 @@
 require 'test_helper'
 
 describe OrgsController do
-# class OrgsControllerTest < ActionController::TestCase
+
   setup do
     @org = FactoryGirl.create(:org)
+    @user = FactoryGirl.create(:user)
+    sign_in :user, @user
   end
 
   test "should get index" do
@@ -19,14 +21,14 @@ describe OrgsController do
 
   test "should create org" do
     assert_difference('Org.count') do
-      post :create, org: { name: @org.name }
+      post :create, { user: current_user, org: { name: @org.name } }
     end
 
     assert_redirected_to org_path(assigns(:org))
   end
 
   test "should show org" do
-    get :show, id: @org
+    get :show, id: @org, user: @user
     assert_response :success
   end
 

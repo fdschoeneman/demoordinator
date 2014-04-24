@@ -3,7 +3,8 @@ class OrgsController < ApplicationController
 
   # GET /orgs
   def index
-    @orgs = Org.all
+    # @user = current_user
+    # @orgs = @user.orgs
   end
 
   # GET /orgs/1
@@ -53,6 +54,6 @@ class OrgsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def org_params
-      params.require(:org).permit(:name)
+      params.require(current_user, :org).permit(:name)
     end
 end

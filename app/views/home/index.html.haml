@@ -3,7 +3,11 @@
   .large-12.columns
     .panel
       .text-center
-        %h1 My Contracts
+        %h1 DemoBoard
+        %ul.inline-list
+          = @user.email
+          %li= link_to "my orgs", user_demos_path(@user.id)
+          %li new demo
 / End Header and Nav
 .row
   / Nav Sidebar
