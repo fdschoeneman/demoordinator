@@ -33,6 +33,7 @@ gem 'mini_magick'
 # authentication
 gem 'devise'
 gem 'devise_invitable'
+gem 'cancan', '~> 1.6.10'
 gem 'rolify', '~> 3.4.0'
 
 # better development data

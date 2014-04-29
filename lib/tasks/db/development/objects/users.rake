@@ -2,12 +2,14 @@ namespace 'db:development:create' do
 
   task users: :environment do
 
-    # satisfy_dependencies()
+    satisfy_dependencies(roles)
 
-    # tester_roles = Role.all.pluck(:name)
+    tester_roles = Role.all.pluck(:name)
 
     testers = [
-      "fred schoeneman"
+      "fred schoeneman",
+      "carly smolak",
+      "claire lussier"
     ]
 
 
